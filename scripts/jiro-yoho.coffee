@@ -11,6 +11,18 @@ module.exports = (robot) ->
     shop_name = msg.match[1]
     robot.http("http://jiroyoho.us/apiend.php/v3/shops")
       .get() (err, res, body) ->
+        shop_names = []
+
         shops = JSON.parse(body)
-        msg.send msg.match[1]
+        for key, shop of shops
+          shop_names.push shop.shopName
+          if shop.shopName == shop_name
+            target_shop = shop
+
+        unless target_shop
+          msg.send "#{shop_name}店が見つかりませんでした。検索可能な店舗一覧：#{shop_names.join(',')}"
+          return
+
+
+        msg.send target_shop.shopName
 
