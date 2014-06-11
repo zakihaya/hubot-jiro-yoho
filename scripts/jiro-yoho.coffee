@@ -38,7 +38,35 @@ module.exports = (robot) ->
             msg.send "#{shop_name}店は本日定休日です。"
           else
             msg.send "#{shop_name}店の今日の営業時間は、#{target_latency.hours} です。"
-          #msg.send target_latency.latency
+            latencys = target_latency.latency.split('')
+            latency_list = []
+            for i in [0..12]
+              unless latencys[i] == 'X'
+                latency_list.push "#{time_labels[i]}：#{latency_labels[latencys[i]]}"
+            if latency_list.length > 0
+              latency_list.unshift("#{shop_name}店の混雑状況です")
+              msg.send latency_list.join('\n')
+
 
 format2Digits = (input) ->
   ("0" + input).slice(-2)
+
+time_labels = ['9-10時',
+               '10-11時',
+               '11-12時',
+               '12-13時',
+               '13-14時',
+               '14-15時',
+               '15-16時',
+               '16-17時',
+               '17-18時',
+               '18-19時',
+               '19-20時',
+               '20-21時',
+               '21時-']
+
+latency_labels =
+  "1": "10分待ち",
+  "2": "30分待ち"
+  "3": "60分待ち"
+  "4": "90分待ち"
