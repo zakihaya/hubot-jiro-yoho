@@ -8,7 +8,7 @@
 module.exports = (robot) ->
   # store    http://jiroyoho.us/apiend.php/v3/shops
   # waiting  http://jiroyoho.us/apiend.php/v3/latencys
-  robot.respond /JIRO-YOHO (.*)$/i, (msg) ->
+  robot.respond /(.*)店どう？$/i, (msg) ->
     shop_name = msg.match[1]
     robot.http("http://jiroyoho.us/apiend.php/v3/shops")
       .get() (err, res, body) ->
