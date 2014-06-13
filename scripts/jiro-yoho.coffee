@@ -4,6 +4,7 @@
 # Commands:
 #   hubot jiro-yoho <query> - Searches jiro shop info.
 
+_ = require 'underscore'
 
 module.exports = (robot) ->
   # store    http://jiroyoho.us/apiend.php/v3/shops
