@@ -43,9 +43,10 @@ module.exports = (robot) ->
             latencys = target_latency.latency.split('')
             for i in [0..12]
               unless latencys[i] == 'X'
-                latency_list.push "#{time_labels[i]}：#{latency_labels[latencys[i]]}"
+                latency_list.push "#{time_labels[i]}:#{latency_labels[latencys[i]]}"
             if latency_list.length > 0
-              msg.send latency_list.join('　')
+              latency_list.unshift("#{shop_name}店の待ち時間")
+              msg.send latency_list.join(' ')
 
 
 format2Digits = (input) ->
@@ -66,7 +67,7 @@ time_labels = ['9-10時',
                '21時-']
 
 latency_labels =
-  "1": "10分待ち",
-  "2": "30分待ち"
-  "3": "60分待ち"
-  "4": "90分待ち"
+  "1": "10分",
+  "2": "30分"
+  "3": "60分"
+  "4": "90分"
