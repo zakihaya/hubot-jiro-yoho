@@ -1,0 +1,10 @@
+#!/bin/sh
+
+export HUBOT_TWITTER_KEY="twitter_key"
+export HUBOT_TWITTER_SECRET="twitter_secret"
+export HUBOT_TWITTER_TOKEN="twitter_token"
+export HUBOT_TWITTER_TOKEN_SECRET="twitter_token_secret"
+
+export HUBOT_NAME="name"
+
+bin/hubot -a twitter
